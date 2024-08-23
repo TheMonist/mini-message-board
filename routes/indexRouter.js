@@ -28,21 +28,20 @@ indexRouter.get('/new', (req, res) =>{
 });
 
 indexRouter.post('/new', (req, res) => {
-    const username = req.body.username;
-    const message = req.body.message;
+    const username  = req.body.username;
+    const message  = req.body.message;
     messages.push({
-        text: message,
-        user: username,
+        message,
+        username,
         added: new Date(),
         id: messages.length
     });
     res.redirect('/');
 });
+    
 
 indexRouter.get('/messages', (req, res) => {
-    res.render('messages', { message: messages[req.params.id] })
+    res.render('messages', { title: 'View Message Details', message: messages[req.params.id] })
 });
-
-console.log(messages);
 
 module.exports = indexRouter;
